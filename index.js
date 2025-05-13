@@ -34,11 +34,7 @@ const blockedKeywords = [
   'miror'
 ].map(k => k.toLowerCase());
 
-const ocrEnabledCategories = [
-  '1301099797972779019',
-  '1337770496124649492',
-  '1363156661900153093'
-];
+
 
 client.on('ready', () => {
   console.log(`✅ Spamming Bots is online as ${client.user.tag}`);
@@ -98,12 +94,8 @@ client.on('messageCreate', async (message) => {
     }
   }, 1000);
 
-  // 🖼️ OCR only in selected category channels
-  const categoryId = message.channel.parentId;
-  const shouldRunOCR = categoryId && ocrEnabledCategories.includes(categoryId);
-
-  if (shouldRunOCR) {
-    for (const attachment of message.attachments.values()) {
+  // 🖼️ OCR for all channels
+  for (const attachment of message.attachments.values()) {
       if (!attachment.contentType?.startsWith('image/')) continue;
 
       try {
