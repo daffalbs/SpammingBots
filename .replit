@@ -10,5 +10,5 @@ channel = "stable-24_11"
 
 [deployment]
 run = ["node", "index.js"]
-deploymentTarget = "autoscale"
-ignorePorts = false
+deploymentTarget = "gce"
+ignorePorts = true
